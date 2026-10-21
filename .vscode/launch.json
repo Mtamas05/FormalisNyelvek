@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Mindkét feladat futtatása (1. DFA Check + 2. DFA Det)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/python-starter/run_all.py",
+            "cwd": "${workspaceFolder}/python-starter",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "1. Feladat: DFA Check (python -m project)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet.txt",
+                "--output", "kimenet.txt",
+                "--check", "10101,111,001"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "2. Feladat: DFA Determinize (python -m project)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet.txt",
+                "--output", "kimenet.txt",
+                "--det"
+            ],
+            "console": "integratedTerminal"
+        }
+    ]
+}
