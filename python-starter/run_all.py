@@ -1,5 +1,8 @@
 """
-Mindkét feladat (1. DFA szóellenőrzés és 2. NFA determinizálás) egymás utáni futtatása.
+Mindhárom feladat egymás utáni szekvenciális futtatása:
+  1. Feladat: DFA szóellenőrzés (--check)
+  2. Feladat: NFA determinizálás részhalmazos konstrukcióval (--det)
+  3. Feladat: DFA minimalizálás partíció-finomítással (--mini)
 """
 
 import os
@@ -8,9 +11,10 @@ import sys
 from pathlib import Path
 
 
-def run_both_problems():
+def run_all_problems():
     starter_dir = Path(__file__).resolve().parent
     os.chdir(starter_dir)
+    python_exe = sys.executable
 
     print("=" * 60)
     print("1. FELADAT: Determinisztikus véges automata szimuláció (DFA Check)")
@@ -24,7 +28,7 @@ def run_both_problems():
     print("-" * 60)
 
     cmd1 = [
-        sys.executable,
+        python_exe,
         "-m",
         "project",
         "--input",
@@ -46,7 +50,6 @@ def run_both_problems():
     print("\n" + "=" * 60)
     print("2. FELADAT: Automata determinizálása (Subset Construction / DFA Det)")
     print("=" * 60)
-    # Ha létezik a bemenet_nfa.txt (valódi nemdeterminisztikus automata), azt használjuk, egyébként a bemenet.txt-t
     input_file_2 = "bemenet_nfa.txt" if os.path.exists("bemenet_nfa.txt") else "bemenet.txt"
     output_file_2 = "kimenet_dfa_det.txt"
 
@@ -54,7 +57,7 @@ def run_both_problems():
     print("-" * 60)
 
     cmd2 = [
-        sys.executable,
+        python_exe,
         "-m",
         "project",
         "--input",
@@ -72,10 +75,42 @@ def run_both_problems():
                 print("Eredmény (determinizált DFA leírása):")
                 print(f.read().strip())
 
+    print("\n" + "=" * 60)
+    print("3. FELADAT: Determinisztikus automata minimalizálása (DFA Mini)")
     print("=" * 60)
-    print("Mindkét feladat sikeresen lefutott!")
+    input_file_3 = "bemenet_mini.txt" if os.path.exists("bemenet_mini.txt") else "bemenet.txt"
+    output_file_3 = "kimenet_dfa_mini.txt"
+
+    print(f"Bemeneti fájl: {input_file_3}")
+    print("-" * 60)
+
+    cmd3 = [
+        python_exe,
+        "-m",
+        "project",
+        "--input",
+        input_file_3,
+        "--output",
+        output_file_3,
+        "--mini",
+    ]
+    res3 = subprocess.run(cmd3, capture_output=True, text=True)
+    if res3.returncode != 0:
+        print(f"Hiba a 3. feladat futásakor:\n{res3.stderr}")
+    else:
+        if os.path.exists(output_file_3):
+            with open(output_file_3, "r", encoding="utf-8") as f:
+                print("Eredmény (minimalizált DFA leírása):")
+                print(f.read().strip())
+
+    print("=" * 60)
+    print("Mindhárom feladat sikeresen lefutott!")
+
+
+# Visszafelé kompatibilitás korábbi hívásokhoz
+def run_both_problems():
+    run_all_problems()
 
 
 if __name__ == '__main__':
-    run_both_problems()
-
+    run_all_problems()

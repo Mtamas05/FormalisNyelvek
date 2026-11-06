@@ -157,5 +157,5 @@ class DFACheckProblem(Problem):
 # fájlokat és tesztszavakat, lefuttatja a Main osztályt, majd kiírja az eredményt a terminálra.
 # A hivatalos "python -m project" vagy az automatikus tesztelő ezt a blokkot nem érinti.
 if __name__ == '__main__':
-    from run_all import run_both_problems
-    run_both_problems()
+    from run_all import run_all_problems
+    run_all_problems()

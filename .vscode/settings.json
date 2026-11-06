@@ -1,8 +1,8 @@
 {
     "cmake.sourceDirectory": "C:/Users/tamas/FormalisNyelvek/cpp-starter",
-    "python.defaultInterpreterPath": "C:/Users/tamas/AppData/Local/Python/bin/python.exe",
+    "python.defaultInterpreterPath": "C:/Users/tamas/AppData/Local/Programs/Python/Python313/python.exe",
     "code-runner.executorMap": {
-        "python": "\"C:\\Users\\tamas\\AppData\\Local\\Python\\bin\\python.exe\" \"$workspaceRoot/python-starter/run_all.py\""
+        "python": "\"C:\\Users\\tamas\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" \"$workspaceRoot/python-starter/run_all.py\""
     },
     "code-runner.clearPreviousOutput": true
 }

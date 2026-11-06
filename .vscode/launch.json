@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Mindkét feladat futtatása (1. DFA Check + 2. DFA Det)",
+            "name": "Mindhárom feladat futtatása (1. Check + 2. Det + 3. Mini)",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/python-starter/run_all.py",
@@ -29,9 +29,22 @@
             "module": "project",
             "cwd": "${workspaceFolder}/python-starter",
             "args": [
-                "--input", "bemenet.txt",
+                "--input", "bemenet_nfa.txt",
                 "--output", "kimenet.txt",
                 "--det"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "3. Feladat: DFA Minimize (python -m project)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet_mini.txt",
+                "--output", "kimenet.txt",
+                "--mini"
             ],
             "console": "integratedTerminal"
         }
