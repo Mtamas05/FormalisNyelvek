@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Mindhárom feladat futtatása (1. Check + 2. Det + 3. Mini)",
+            "name": "Mind a 4 feladat futtatása (1. Check + 2. Det + 3. Mini + 4. Regex)",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/python-starter/run_all.py",
@@ -45,6 +45,71 @@
                 "--input", "bemenet_mini.txt",
                 "--output", "kimenet.txt",
                 "--mini"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "4. Feladat: Regex Logcat (--rgx 1)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet_log.txt",
+                "--output", "kimenet_rgx_1.txt",
+                "--rgx", "1"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "4. Feladat: Regex Logcat (--rgx 2)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet_log.txt",
+                "--output", "kimenet_rgx_2.txt",
+                "--rgx", "2"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "4. Feladat: Regex Logcat (--rgx 3)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet_log.txt",
+                "--output", "kimenet_rgx_3.txt",
+                "--rgx", "3"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "4. Feladat: Regex Logcat (--rgx 4)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet_log.txt",
+                "--output", "kimenet_rgx_4.txt",
+                "--rgx", "4"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "4. Feladat: Regex Logcat (--rgx 5)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "project",
+            "cwd": "${workspaceFolder}/python-starter",
+            "args": [
+                "--input", "bemenet_log.txt",
+                "--output", "kimenet_rgx_5.txt",
+                "--rgx", "5"
             ],
             "console": "integratedTerminal"
         }

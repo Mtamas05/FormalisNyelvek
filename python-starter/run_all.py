@@ -1,8 +1,9 @@
 """
-Mindhárom feladat egymás utáni szekvenciális futtatása:
+Mind a négy feladat egymás utáni szekvenciális futtatása:
   1. Feladat: DFA szóellenőrzés (--check)
   2. Feladat: NFA determinizálás részhalmazos konstrukcióval (--det)
   3. Feladat: DFA minimalizálás partíció-finomítással (--mini)
+  4. Feladat: Reguláris kifejezések Android logfájlokon (--rgx 1..5)
 """
 
 import os
@@ -103,8 +104,39 @@ def run_all_problems():
                 print("Eredmény (minimalizált DFA leírása):")
                 print(f.read().strip())
 
+    print("\n" + "=" * 60)
+    print("4. FELADAT: Reguláris kifejezések Android logfájlon (Regex)")
     print("=" * 60)
-    print("Mindhárom feladat sikeresen lefutott!")
+    input_file_4 = "bemenet_log.txt" if os.path.exists("bemenet_log.txt") else "bemenet.txt"
+    print(f"Bemeneti fájl: {input_file_4}")
+    print("-" * 60)
+
+    for task_id in range(1, 6):
+        output_file_4 = f"kimenet_rgx_{task_id}.txt"
+        cmd4 = [
+            python_exe,
+            "-m",
+            "project",
+            "--input",
+            input_file_4,
+            "--output",
+            output_file_4,
+            "--rgx",
+            str(task_id),
+        ]
+        res4 = subprocess.run(cmd4, capture_output=True, text=True)
+        if res4.returncode != 0:
+            print(f"Hiba a 4. feladat (--rgx {task_id}) futásakor:\n{res4.stderr}")
+        else:
+            if os.path.exists(output_file_4):
+                with open(output_file_4, "r", encoding="utf-8") as f:
+                    content = f.read().strip()
+                    lines = content.splitlines()
+                    preview = '\n'.join(lines[:3]) + (f"\n... (+{len(lines)-3} sor)" if len(lines) > 3 else "")
+                    print(f"--rgx {task_id} eredmény:\n{preview}\n")
+
+    print("=" * 60)
+    print("Mind a négy feladat sikeresen lefutott!")
 
 
 # Visszafelé kompatibilitás korábbi hívásokhoz
